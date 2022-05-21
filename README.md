@@ -1,6 +1,16 @@
 # LSM6DS3 Python Module
 
-Highly configurable LSM6DS3 module for Python, tested with Raspberry Pi, example included
+Highly configurable LSM6DS3 module for Python, tested with Raspberry Pi, example included.
+
+## Materials Used
+
+* [STEVAL-MKI160V1](https://www.st.com/en/evaluation-tools/steval-mki160v1.html)
+* [Raspberry Pi 3B+](https://www.sparkfun.com/products/15361)
+
+## Documentation
+
+* [STEVAL-MKI160V1](doc/en.DM00164425.pdf)
+* [LSM6DS3TR-C](doc/lsm6ds3tr-c.pdf)
 
 ## Dependencies
 
