@@ -87,7 +87,7 @@ class LSM6DS3:
             
             else:
             
-                print '%s: Invalid output data rate specified for accelerometer, setting to 12.5 HZ so module can still run, to change use changeAccODR method' % self.__name__
+                print('%s: Invalid output data rate specified for accelerometer, setting to 12.5 HZ so module can still run, to change use changeAccODR method' % self.__name__)
             
                 self.ACC_ODR = ACC_ODR_12_5_HZ
 
@@ -99,7 +99,7 @@ class LSM6DS3:
 
             else:
 
-                print '%s: Invalid output data rate specified for gyroscope, setting to 12.5 HZ so module can still run, to change use changeGyroODR method' % self.__name__
+                print('%s: Invalid output data rate specified for gyroscope, setting to 12.5 HZ so module can still run, to change use changeGyroODR method' % self.__name__)
 
                 self.GYRO_ODR = GYRO_ODR_12_5_HZ
 
@@ -317,7 +317,7 @@ class LSM6DS3:
             else:
                 return bus.read_i2c_block_data(self.DEVICE_ADDRESS, reg, b)
         except Exception as e:
-            print 'Caught exception %s' % e
+            print('Caught exception %s' % e)
 
     def __write_reg(self, reg, data, b=1):
         try:
@@ -326,7 +326,7 @@ class LSM6DS3:
             else:
                 return bus.write_i2c_block_data(self.DEVICE_ADDRESS, reg, data)
         except Exception as e:
-            print 'Caught exception %s' % e
+            print('Caught exception %s' % e)
 
     def __twos_complement(self, x, bits=16):
         mask = 2**(bits-1)
@@ -336,7 +336,7 @@ class LSM6DS3:
         
         if not self.acc_enabled and self.__initialized:
             # don't need to do anything, already disabled
-            print '%s: accelerometer already disabled' % self.__name__
+            print('%s: accelerometer already disabled' % self.__name__)
             return
 
         current_reg_data = self.__read_reg(self.regs['CTRL9_XL'])
@@ -357,7 +357,7 @@ class LSM6DS3:
         
         if not self.gyro_enabled and self.__initialized:
             # don't need to do anything, already disabled
-            print '%s: gyroscope already disabled' % self.__name__
+            print('%s: gyroscope already disabled' % self.__name__)
             return
 
         current_reg_data = self.__read_reg(self.regs['CTRL10_C'])
@@ -378,7 +378,7 @@ class LSM6DS3:
         
         if self.acc_enabled and self.__initialized:
             # don't need to do anything, already enabled
-            print '%s: accelerometer already enabled' % self.__name__
+            print('%s: accelerometer already enabled' % self.__name__)
             return
 
         current_reg_data = self.__read_reg(self.regs['CTRL9_XL'])
@@ -408,7 +408,7 @@ class LSM6DS3:
         
         if self.gyro_enabled and self.__initialized:
             # don't need to do anything, already enabled
-            print '%s: gyroscope already enabled' % self.__name__
+            print('%s: gyroscope already enabled' % self.__name__)
             return
 
         current_reg_data = self.__read_reg(self.regs['CTRL10_C'])
@@ -433,7 +433,7 @@ class LSM6DS3:
 
         # nothing to do, already enabled
         if self.acc_interrupt_enabled and self.__initialized:
-            print '%s: accelerometer interrupt already enabled' % self.__name__
+            print('%s: accelerometer interrupt already enabled' % self.__name__)
             return
 
         INTx_DRDY_XL_SHIFT = 0
@@ -463,7 +463,7 @@ class LSM6DS3:
 
         # nothing to do, already disabled
         if not self.acc_interrupt_enabled and self.__initialized:
-            print '%s: accelerometer interrupt already disabled' % self.__name__
+            print('%s: accelerometer interrupt already disabled' % self.__name__)
             return
         
         INTx_DRDY_XL_SHIFT = 0
@@ -485,7 +485,7 @@ class LSM6DS3:
 
         # nothing to do, already enabled
         if self.gyro_interrupt_enabled and self.__initialized:
-            print '%s: gyroscope interrupt already enabled' % self.__name__
+            print('%s: gyroscope interrupt already enabled' % self.__name__)
             return
 
         INTx_DRDY_G_SHIFT = 1
