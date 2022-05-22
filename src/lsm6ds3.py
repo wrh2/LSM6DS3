@@ -6,6 +6,7 @@ Programmed by William Harrington
 wrh2.github.io
 """
 import smbus
+from ctypes import c_int16
 
 bus = smbus.SMBus(1)
 
@@ -328,9 +329,9 @@ class LSM6DS3:
         except Exception as e:
             print('Caught exception %s' % e)
 
-    def __twos_complement(self, x, bits=16):
-        mask = 2**(bits-1)
-        return -(x & mask) + (x & ~mask)
+    # def __twos_complement(self, x, bits=16):
+    #     mask = 2**(bits-1)
+    #     return -(x & mask) + (x & ~mask)
 
     def disableAccelerometer(self):
         
@@ -567,19 +568,19 @@ class LSM6DS3:
         acc_x = self.__read_reg(self.regs['OUTX_L_XL'], b=2)
         combined = (acc_x[1] << 8) | acc_x[0]
         if raw: return combined
-        return self.__twos_complement(combined)*self.acc_sensitivity*self.acc_scale
+        return c_int16(combined).value*self.acc_sensitivity*self.acc_scale
 
     def __getAccDataY(self, raw):
         acc_y = self.__read_reg(self.regs['OUTY_L_XL'], b=2)
         combined = (acc_y[1] << 8) | acc_y[0]
         if raw: return combined
-        return self.__twos_complement(combined)*self.acc_sensitivity*self.acc_scale
+        return c_int16(combined).value*self.acc_sensitivity*self.acc_scale
 
     def __getAccDataZ(self, raw):
         acc_z = self.__read_reg(self.regs['OUTZ_L_XL'], b=2)
         combined = (acc_z[1] << 8) | acc_z[0]
         if raw: return combined
-        return self.__twos_complement(combined)*self.acc_sensitivity*self.acc_scale
+        return c_int16(combined).value*self.acc_sensitivity*self.acc_scale
 
     def __getAccDataAll(self, raw):
 
@@ -627,19 +628,19 @@ class LSM6DS3:
         gyro_x = self.__read_reg(self.regs['OUTX_L_G'], b=2)
         combined = (gyro_x[1] << 8) | gyro_x[0]
         if raw: return combined
-        return self.__twos_complement(combined)*self.gyro_sensitivity*self.gyro_scale
+        return c_int16(combined).value*self.gyro_sensitivity*self.gyro_scale
 
     def __getGyroDataY(self, raw):
         gyro_y = self.__read_reg(self.regs['OUTY_L_G'], b=2)
         combined = (gyro_y[1] << 8) | gyro_y[0]
         if raw: return combined
-        return self.__twos_complement(combined)*self.gyro_sensitivity*self.gyro_scale
+        return c_int16(combined).value*self.gyro_sensitivity*self.gyro_scale
 
     def __getGyroDataZ(self, raw):
         gyro_z = self.__read_reg(self.regs['OUTZ_L_G'], b=2)
         combined = (gyro_z[1] << 8) | gyro_z[0]
         if raw: return combined
-        return self.__twos_complement(combined)*self.gyro_sensitivity*self.gyro_scale
+        return c_int16(combined).value*self.gyro_sensitivity*self.gyro_scale
 
     def __getGyroDataAll(self, raw):
 
