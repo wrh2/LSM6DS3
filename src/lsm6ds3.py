@@ -10,7 +10,7 @@ from ctypes import c_int16
 
 bus = smbus.SMBus(1)
 
-LSM6DS3_WHO_AM_I = 0x6a
+LSM6DS3_WHO_AM_I = 0x69
 
 ACC_ODR_POWER_DOWN = 0
 ACC_ODR_12_5_HZ = 1
