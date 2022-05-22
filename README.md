@@ -10,7 +10,7 @@ Highly configurable LSM6DS3 module for Python, tested with Raspberry Pi, example
 ## Documentation
 
 * [STEVAL-MKI160V1](doc/en.DM00164425.pdf)
-* [LSM6DS3TR-C](doc/lsm6ds3tr-c.pdf)
+* [LSM6DS3TR](doc/st_imu_lsm6ds3_datasheet.pdf)
 
 ## Dependencies
 
