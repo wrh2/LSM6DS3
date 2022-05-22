@@ -15,9 +15,9 @@ def my_acc_callback(channel):
     try:
         # logic is active high
         if GPIO.input(channel):
-            print 'Accelerometer data [X, Y, Z]: %s' % imu.getAccData() # for raw data, imu.getAccData(raw=True)
+            print('Accelerometer data [X, Y, Z]: %s' % imu.getAccData()) # for raw data, imu.getAccData(raw=True)
     except Exception as e:
-            print 'Caught exception %s' % e
+            print('Caught exception %s' % e)
             GPIO.cleanup()
             sys.exit(0)
         
@@ -26,9 +26,9 @@ def my_gyro_callback(channel):
     try:
         # logic is active high
         if GPIO.input(channel):
-            print 'Gyroscope data [X, Y, Z]: %s' % imu.getGyroData() # for raw data, imu.getGyroData(raw=True)
+            print('Gyroscope data [X, Y, Z]: %s' % imu.getGyroData()) # for raw data, imu.getGyroData(raw=True)
     except Exception as e:
-            print 'Caught exception %s' % e
+            print('Caught exception %s' % e)
             GPIO.cleanup()
             sys.exit(0)
 
@@ -49,7 +49,7 @@ def main():
             GPIO.cleanup()
             sys.exit(0)
         except Exception as e:
-            print 'Caught exception %s' % e
+            print('Caught exception %s' % e)
             GPIO.cleanup()
             sys.exit(0)
 
