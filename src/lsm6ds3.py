@@ -10,6 +10,8 @@ from ctypes import c_int16
 
 bus = smbus.SMBus(1)
 
+LSM6DS3_WHO_AM_I = 0x6a
+
 ACC_ODR_POWER_DOWN = 0
 ACC_ODR_12_5_HZ = 1
 ACC_ODR_26_HZ = 2
@@ -329,9 +331,8 @@ class LSM6DS3:
         except Exception as e:
             print('Caught exception %s' % e)
 
-    # def __twos_complement(self, x, bits=16):
-    #     mask = 2**(bits-1)
-    #     return -(x & mask) + (x & ~mask)
+    def getWhoAmI(self):
+        return self.__read_reg(self.regs['WHO_AM_I'])
 
     def disableAccelerometer(self):
         

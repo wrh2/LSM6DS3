@@ -3,6 +3,11 @@ import unittest
 
 class TestLSM6DS3(unittest.TestCase):
 
+    def test_who_am_i(self):
+        acc = LSM6DS3(enable_acc=ENABLE_ACC_NONE_AXIS, enable_gyro=ENABLE_GYRO_NONE_AXIS)
+        who_am_i = acc.getWhoAmI()
+        self.assertEqual(who_am_i, LSM6DS3_WHO_AM_I)
+
     def test_acc_x(self):
         acc = LSM6DS3(ACC_ODR=ACC_ODR_12_5_HZ, enable_acc=ENABLE_ACC_X_AXIS, enable_gyro=ENABLE_GYRO_NONE_AXIS)
         data = acc.getAccGyroData()
