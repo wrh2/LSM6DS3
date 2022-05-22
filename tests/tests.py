@@ -15,7 +15,7 @@ class TestLSM6DS3(unittest.TestCase):
         self.assertEqual([data[1], data[2], data[3], data[4], data[5]], [None, None, None, None, None])
 
     def test_acc_y(self):
-        acc = LSM6DS3(enable_acc=ENABLE_ACC_Y_AXIS, enable_gyro=ENABLE_GYRO_NONE_AXIS)
+        acc = LSM6DS3(ACC_ODR=ACC_ODR_12_5_HZ, enable_acc=ENABLE_ACC_Y_AXIS, enable_gyro=ENABLE_GYRO_NONE_AXIS)
         data = acc.getAccGyroData()
         self.assertNotEqual(data[1], None)
         self.assertEqual([data[0], data[2], data[3], data[4], data[5]], [None, None, None, None, None])
