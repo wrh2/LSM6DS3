@@ -183,8 +183,10 @@ class LSM6DS3:
 
     def __deinitialize(self):
         if self.__initialized:
-            self.disableAccelerometer()
-            self.disableGyroscope()
+            if self.acc_enabled:
+                self.disableAccelerometer()
+            if self.gyro_enabled:
+                self.disableGyroscope()
 
     def __del__(self):
         self.__deinitialize()
