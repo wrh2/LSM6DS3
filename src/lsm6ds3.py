@@ -180,6 +180,14 @@ class LSM6DS3:
         else: self.disableGyroscope()
 
         return True
+
+    def __deinitialize(self):
+        if self.__initialized:
+            self.disableAccelerometer()
+            self.disableGyroscope()
+
+    def __del__(self):
+        self.__deinitialize()
         
     def __setupRegisterMap(self):
         
