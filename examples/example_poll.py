@@ -17,9 +17,11 @@ def main():
             print('Gyroscope data [X, Y, Z]: %s' % imu.getGyroData()) # for raw data, imu.getGyroData(raw=True)
             time.sleep(1) # ~1Hz
         except KeyboardInterrupt:
+            del(imu)
             sys.exit(0)
         except Exception as e:
             print('Caught exception %s' % e)
+            del(imu)
             sys.exit(0)
 
 if __name__ == '__main__':

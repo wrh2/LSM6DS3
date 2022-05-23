@@ -191,8 +191,8 @@ class LSM6DS3:
     def __del__(self):
         self.__deinitialize()
 
-    def __exit__(self):
-        self.__deinitialize()
+    # def __exit__(self):
+    #     self.__deinitialize()
         
     def __setupRegisterMap(self):
         

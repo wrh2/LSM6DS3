@@ -47,10 +47,12 @@ def main():
             time.sleep(1)
         except KeyboardInterrupt:
             GPIO.cleanup()
+            del(imu)
             sys.exit(0)
         except Exception as e:
             print('Caught exception %s' % e)
             GPIO.cleanup()
+            del(imu)
             sys.exit(0)
 
 if __name__ == '__main__':
