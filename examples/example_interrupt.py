@@ -41,6 +41,7 @@ def gpio_setup():
     GPIO.add_event_detect(27, GPIO.BOTH, callback=my_gyro_callback)
 
 def main():
+    global imu
     gpio_setup()
     while 1:
         try:

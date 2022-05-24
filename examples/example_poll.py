@@ -11,6 +11,7 @@ imu = LSM6DS3(ACC_ODR=ACC_ODR_1_66_KHZ,
               gyro_scale=GYRO_SCALE_2000DPS)
 
 def main():
+    global imu
     while 1:
         try:
             print('Accelerometer data [X, Y, Z]: %s' % imu.getAccData()) # for raw data, imu.getAccData(raw=True)
