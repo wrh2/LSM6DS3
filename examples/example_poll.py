@@ -7,6 +7,8 @@ imu = LSM6DS3(ACC_ODR=ACC_ODR_1_66_KHZ,
               GYRO_ODR=GYRO_ODR_1_66_KHZ,
               enable_acc=ENABLE_ACC_ALL_AXIS,
               enable_gyro=ENABLE_GYRO_ALL_AXIS,
+              acc_interrupt=False,
+              gyro_interrupt=False,
               acc_scale=ACC_SCALE_16G,
               gyro_scale=GYRO_SCALE_2000DPS)
 
