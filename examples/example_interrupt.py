@@ -3,13 +3,7 @@ import RPi.GPIO as GPIO
 import time
 import sys
 
-# setup for IMU
-imu = LSM6DS3(ACC_ODR=ACC_ODR_1_66_KHZ,
-              GYRO_ODR=GYRO_ODR_1_66_KHZ,
-              enable_acc=ENABLE_ACC_ALL_AXIS,
-              enable_gyro=ENABLE_GYRO_ALL_AXIS,
-              acc_scale=ACC_SCALE_16G,
-              gyro_scale=GYRO_SCALE_2000DPS)
+global imu
 
 def my_acc_callback(channel):
     try:
@@ -42,7 +36,18 @@ def gpio_setup():
 
 def main():
     global imu
+
+    # setup GPIO first otherwise it'll miss the first interrupt
     gpio_setup()
+
+    # setup for IMU
+    imu = LSM6DS3(ACC_ODR=ACC_ODR_12_5_HZ,
+                GYRO_ODR=GYRO_ODR_12_5_HZ,
+                enable_acc=ENABLE_ACC_ALL_AXIS,
+                enable_gyro=ENABLE_GYRO_ALL_AXIS,
+                acc_scale=ACC_SCALE_16G,
+                gyro_scale=GYRO_SCALE_2000DPS)
+
     while 1:
         try:
             time.sleep(1)
